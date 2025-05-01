@@ -1,0 +1,137 @@
+@-moz-document regexp('^moz-extension://.*/panorama/view.html$') {
+  html {
+    scrollbar-width: none;
+  }
+
+  body {
+    background-color: #212121 !important;
+    height: 2000px !important;
+  }
+
+  #groups::before {
+    display: none !important;
+  }
+
+  .group {
+    min-height: 110px !important;
+    max-height: 110px !important;
+
+    &::before {
+      border-radius: 4px !important;
+      background-color: #333333 !important;
+      outline: none !important;
+      box-shadow: 0 0 4px #212121;
+    }
+
+    &:has(.tab.active) {
+      --indicator-size: 4px;
+
+      &::before {
+        border-left: var(--indicator-size) solid AccentColor !important;
+      }
+
+      .header {
+        left: var(--indicator-size) !important;
+      }
+
+      .tabs {
+        padding-left: var(--indicator-size) !important;
+      }
+    }
+
+    .header {
+      input {
+        font-weight: 600;
+        opacity: 0.9 !important;
+      }
+
+      .tab_count {
+        display: none;
+      }
+
+      .close {
+        cursor: pointer !important;
+      }
+    }
+
+    .tabs {
+      flex-wrap: nowrap !important;
+    }
+
+    .newtab {
+      display: none;
+    }
+
+    .tab {
+      max-width: 60px;
+      min-width: 60px;
+      max-height: 65px;
+      min-height: 65px;
+
+      &.active .container {
+        outline: 1.5px solid AccentColor !important;
+      }
+
+      &.inactive .container {
+        opacity: 1 !important;
+
+        .title span {
+          opacity: 0.4;
+        }
+      }
+
+      .container {
+        outline: 0 !important;
+        border: 0 !important;
+        background-color: #444 !important;
+        border-radius: 4px !important;
+        cursor: pointer;
+
+        .close {
+          display: none; 
+        }
+
+        &:hover {
+           background-color: #555 !important;
+
+          .close {
+            display: block !important;
+            margin: 0 !important;
+          }
+        }
+      }
+
+      .favicon {
+        position: absolute;
+        inline-size: 24px !important;
+        block-size: 24px !important;
+        left: 50% !important;
+        top: 50% !important;
+        margin: 0 !important;
+        translate: -12px -18px;
+        padding: 0 !important;
+        background-color: transparent !important;
+      }
+
+      .thumbnail {
+        display: none;
+      }
+
+      .title {
+        margin: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+
+        & > span {
+          border-radius: 0 !important;
+          font-size: 9px !important;
+          text-overflow: '' !important;
+          background-color: transparent !important;
+          outline: 0 !important;
+          padding: 2px 4px !important;
+        }
+      }
+    }
+  }
+}

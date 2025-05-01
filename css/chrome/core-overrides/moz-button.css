@@ -1,0 +1,208 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+ :host {
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+}
+
+button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  /* HTML button gets `font: -moz-button` from UA styles,
+   * but we want it to match the root font styling. */
+  font: inherit;
+  color: var(--button-text-color);
+  width: 100%;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  padding-inline-start: var(--button-outer-padding-inline-start, var(--button-outer-padding-inline));
+  padding-inline-end: var(--button-outer-padding-inline-end, var(--button-outer-padding-inline));
+  padding-block-start: var(--button-outer-padding-block-start, var(--button-outer-padding-block));
+  padding-block-end: var(--button-outer-padding-block-end, var(--button-outer-padding-block));
+}
+
+.button-background {
+  box-sizing: border-box;
+  min-height: var(--button-min-height);
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  padding: var(--button-padding);
+  font-weight: var(--button-font-weight);
+  /* Ensure font-size isn't overridden by widget styling (e.g. in forms.css) */
+  font-size: var(--button-font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &[size=small] {
+    min-height: var(--button-min-height-small);
+    font-size: var(--button-font-size-small);
+  }
+
+  button:hover > & {
+    background-color: var(--button-background-color-hover);
+    border-color: var(--button-border-color-hover);
+    color: var(--button-text-color-hover);
+  }
+
+  button:hover:active:not(:disabled) > & {
+    background-color: var(--button-background-color-active);
+    border-color: var(--button-border-color-active);
+    color: var(--button-text-color-active);
+  }
+
+  button:disabled > & {
+    background-color: var(--button-background-color-disabled);
+    border-color: var(--button-border-color-disabled);
+    color: var(--button-text-color-disabled);
+    opacity: var(--button-opacity-disabled);
+  }
+
+  button:focus-visible > & {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  &[type="primary"] {
+    background-color: var(--button-background-color-primary);
+    border-color: var(--button-border-color-primary);
+    color: var(--button-text-color-primary);
+
+    button:hover > & {
+      background-color: var(--button-background-color-primary-hover);
+      border-color: var(--button-border-color-primary-hover);
+      color: var(--button-text-color-primary-hover);
+    }
+
+    button:hover:active:not(:disabled) > & {
+      background-color: var(--button-background-color-primary-active);
+      border-color: var(--button-border-color-primary-active);
+      color: var(--button-text-color-primary-active);
+    }
+
+    button:disabled > & {
+      background-color: var(--button-background-color-primary-disabled);
+      border-color: var(--button-border-color-primary-disabled);
+      color: var(--button-text-color-primary-disabled);
+    }
+  }
+
+  &[type="destructive"] {
+    background-color: var(--button-background-color-destructive);
+    border-color: var(--button-border-color-destructive);
+    color: var(--button-text-color-destructive);
+
+    button:hover > & {
+      background-color: var(--button-background-color-destructive-hover);
+      border-color: var(--button-border-color-destructive-hover);
+      color: var(--button-text-color-destructive-hover);
+    }
+
+    button:hover:active:not(:disabled) > & {
+      background-color: var(--button-background-color-destructive-active);
+      border-color: var(--button-border-color-destructive-active);
+      color: var(--button-text-color-destructive-active);
+    }
+
+    button:disabled > & {
+      background-color: var(--button-background-color-destructive-disabled);
+      border-color: var(--button-border-color-destructive-disabled);
+      color: var(--button-text-color-destructive-disabled);
+    }
+  }
+
+  &[type~=ghost] {
+    background-color: var(--button-background-color-ghost);
+    border-color: var(--button-border-color-ghost);
+    color: var(--button-text-color-ghost);
+
+    button:hover > & {
+      background-color: var(--button-background-color-ghost-hover);
+      border-color: var(--button-border-color-ghost-hover);
+      color: var(--button-text-color-ghost-hover);
+    }
+
+    button:hover:active:not(:disabled) > & {
+      background-color: var(--button-background-color-ghost-active);
+      border-color: var(--button-border-color-ghost-active);
+      color: var(--button-text-color-ghost-active);
+    }
+
+    button:disabled > & {
+      background-color: var(--button-background-color-ghost-disabled);
+      border-color: var(--button-border-color-ghost-disabled);
+      color: var(--button-text-color-ghost-disabled);
+    }
+  }
+
+  &.labelled {
+    gap: var(--space-small)
+  }
+
+  &[type~=icon]:not(.labelled) {
+    background-size: var(--icon-size-default);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &[type~=icon]:not(.labelled),
+  &:not(.labelled):has(img) {
+    width: var(--button-size-icon);
+    height: var(--button-size-icon);
+    padding: var(--button-padding-icon);
+
+    &[size=small] {
+      width: var(--button-size-icon-small);
+      height: var(--button-size-icon-small);
+    }
+  }
+
+  img,
+  &[type~=icon]:not(.labelled) {
+    -moz-context-properties: fill, fill-opacity, stroke;
+    fill: var(--button-icon-fill);
+    stroke: var(--button-icon-stroke);
+  }
+
+  img {
+    width: var(--icon-size-default);
+    height: var(--icon-size-default);
+    pointer-events: none;
+  }
+}
+
+/* overrides */
+
+button[title="Bitwarden"] {
+  .button-background {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' stroke-width='1.5' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 15.5279V2.6C4 2.26863 4.26863 2 4.6 2H19.4C19.7314 2 20 2.26863 20 2.6V15.5279C20 17.043 19.144 18.428 17.7889 19.1056L12.2683 21.8658C12.0994 21.9503 11.9006 21.9503 11.7317 21.8658L6.21115 19.1056C4.85601 18.428 4 17.043 4 15.5279Z' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center 55%;
+
+    img {
+      opacity: 0 !important;
+    }
+  }
+}
+
+button[title="Raindrop.io"] {
+  .button-background {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='24px' height='24px' stroke-width='1.5' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 21V5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V21L13.0815 17.1953C12.4227 16.7717 11.5773 16.7717 10.9185 17.1953L5 21Z' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center 55%;
+
+    img {
+      opacity: 0 !important;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+#main-window {
+  /* remove popover boarder */
+  & :is(menupopup, panel) {
+    --panel-border-color: transparent !important;
+  }
+
+  /* refine typographic styles */
+  .panel-header {
+    text-align: start !important;
+    margin-inline-start: 5px !important;
+    margin-block-start: 2px !important;
+    font-size: 1.125em;
+
+    & > .subviewbutton-back {
+      margin-inline: -5px 3px !important;
+    }
+  }
+  .subview-subheader {
+    font-size: 0.8em !important;
+  }
+
+  /* extensions panel polishing */
+  unified-extensions-item {
+    &:has(> box > [disabled]) {
+      display: none !important;
+    }
+  }
+  .unified-extensions-item-name {
+    font-weight: 600;
+  }
+  .unified-extensions-item-message-deck {
+    font-size: 0.8em;
+    padding-inline: 2px;
+  }
+
+  /* switch seperator style from border to spacing */
+  toolbarseparator {
+    border: 0 !important;
+    padding: 5px !important;
+  }
+
+  menuseparator {
+    margin-block: 4px !important;
+
+    &::before {
+      display: none !important;
+    }
+  }
+}

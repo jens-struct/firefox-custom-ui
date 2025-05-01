@@ -1,0 +1,53 @@
+#tabbrowser-tabs[orient="vertical"] {
+  &[overflow]::after {
+    border-bottom: 0 !important;
+  }
+
+  /* tab buttons */
+  .tab-background {
+    /* change border radius */
+    border-radius: var(--border-radius-small) !important;
+
+    &:is([selected], [multiselected]) {
+      box-shadow: none !important;
+    }
+  }
+
+  .tabbrowser-tab {
+    margin-block-start: -5px !important;
+    padding-block: 0;
+
+    .tab-text {
+      font-size: 0.9em;
+    }
+  }
+
+  /* hide "new tab"-button */
+  #tabs-newtab-button,
+  #vertical-tabs-newtab-button {
+    display: none;
+  }
+
+  .tabbrowser-tab[label="Panorama View"] {
+    display: none;
+  }
+
+  .tabbrowser-tab[label="Easy Speed Dial"] {
+    .tab-icon-stack {
+      background-image: url('../../icons/pages.svg');
+      background-repeat: no-repeat;
+      background-size: 90%;
+      background-position: -50% center;
+
+      .tab-icon-image {
+        opacity: 0 !important;
+      }
+    }
+
+    .tab-label-container {
+      .tab-text {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+#sidebar {
+  border: 0 !important;
+  box-shadow: none !important;
+  background-color: #212121 !important;
+  border-radius: var(--border-radius-small) var(--border-radius-small) 0 0 !important;
+}
+
+#sidebar-box {
+  padding-block-end: 0 !important;
+  padding-inline-end: 5px !important;
+}
+
+#bookmarksPanel {
+  padding: 0 20px !important;
+
+  #sidebar-search-container {
+    padding-inline: 0 !important;
+  }
+}
+
+#sidebar-panel-header {
+  padding: 0 !important;
+}

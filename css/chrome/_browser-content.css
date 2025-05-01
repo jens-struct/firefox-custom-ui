@@ -1,0 +1,21 @@
+/* webpage content box */
+#tabbrowser-tabbox {
+  /* remove border/outline */
+  outline: 0 !important;
+  box-shadow: none !important;
+
+  /* add border radius (when sidebar is shown) */
+  &:is([sidebar-shown]) {
+    &,
+    .browserContainer,
+    browser {
+      border-start-start-radius: var(--border-radius-small) !important;
+      clip-path: inset(0 round var(--border-radius-small) 0 0);
+    }
+  }
+
+  .browserContainer,
+  browser {
+    background-color: #212121;
+  }
+}

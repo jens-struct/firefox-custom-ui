@@ -1,0 +1,256 @@
+toolbar {
+  /* sidebar button: disable background color for checked state */
+  #sidebar-button {
+    &:not(:hover) {
+      &:is([checked]) > :is(.toolbarbutton-icon) {
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  /* make state background colors visually consistent */
+  --urlbar-box-focus-bgcolor: var(--tab-hover-background-color);
+  --urlbar-box-hover-bgcolor: var(--tab-hover-background-color);
+  --urlbar-box-active-bgcolor: var(--tab-hover-background-color);
+  .toolbarbutton-1 {
+    &:not([disabled]) {
+      &:is(:hover, :active, [open], [checked]) > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+        background-color: var(--tab-hover-background-color) !important;
+      }
+    }
+  }
+
+  /*
+   * toolbar buttons (icons)
+   */
+
+  --toolbar-icon-width: 32px;
+  --toolbar-icon-height: 34px;
+
+  /* style close button like a toolbar button */
+  .titlebar-close { 
+    margin-inline: 0 4px !important;
+    padding: 0 !important;
+
+    & > .toolbarbutton-icon {
+      appearance: unset !important;
+      inline-size: var(--toolbar-icon-width);
+      block-size: var(--toolbar-icon-height);
+      border-radius: var(--border-radius-small);
+      background-image: url('../../icons/close.svg') !important;
+      background-repeat: no-repeat;
+      background-size: 75%;
+      background-position: center;
+    }
+
+    &:hover > .toolbarbutton-icon {
+      background-color: var(--tab-hover-background-color) !important;
+    }
+  }
+
+  /* menu button */
+  #PanelUI-menu-button {
+    list-style-image: none !important;
+    padding: 0 !important;
+
+    stack {
+      padding: 0 !important;
+    }
+
+    .toolbarbutton-icon {
+      background-image: url('../../icons/menu.svg');
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      background-repeat: no-repeat;
+      background-size: 55%;
+      background-position: center;
+    }
+  }
+
+  /* extensions button */
+  #unified-extensions-button {
+    list-style-image: none !important;
+
+    .toolbarbutton-icon {
+      background-image: url('../../icons/extension.svg');
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      background-repeat: no-repeat;
+      background-size: 55%;
+      background-position: center;
+    }
+  }
+
+  /* panorama view button */
+  toolbarbutton[label="Panorama View"] {
+    list-style-image: none !important;
+    padding: 0 !important;
+
+    stack {
+      padding: 0 !important;
+    }
+
+    .toolbarbutton-icon {
+      background-image: url('../../icons/grid.svg');
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      background-repeat: no-repeat;
+      background-size: 55%;
+      background-position: center;
+    }
+  }
+
+  /* all tabs button */
+  #alltabs-button {
+    list-style-image: none !important;
+    padding: 0 !important;
+
+    stack {
+      padding: 0 !important;
+    }
+
+    .toolbarbutton-icon {
+      background-image: url('../../icons/pages.svg');
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: center;
+    }
+  }
+
+  /* raindrop.io button */
+  toolbarbutton[label="Raindrop.io"] {
+    list-style-image: none !important;
+    padding: 0 !important;
+
+    stack {
+      padding: 0 !important;
+    }
+
+    .toolbarbutton-icon {
+      background-image: url('../../icons/cloud-bookmark.svg');
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      background-repeat: no-repeat;
+      background-size: 55%;
+      background-position: center;
+    }
+
+    &:is([badge="✓"]) {
+      .toolbarbutton-icon {
+        background-image: url('../../icons/cloud-bookmark-checked.svg');
+      }
+    }
+
+    .toolbarbutton-badge {
+      display: none;
+    }
+  }
+
+  /* sidebar button */
+  #sidebar-button {
+    list-style-image: none !important;
+
+    .toolbarbutton-icon {
+      background-image: url('../../icons/sidebar-expand.svg');
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      background-repeat: no-repeat;
+      background-size: 55%;
+      background-position: center;
+    }
+
+    &:is([checked]) {
+      .toolbarbutton-icon {
+        background-image: url('../../icons/sidebar-collapse.svg');
+      }
+    }
+  }
+
+  /* back/forward/reload buttons */
+  #back-button,
+  #forward-button,
+  #reload-button {
+    padding: 0 !important;
+
+    & > .toolbarbutton-icon {
+      padding-inline: 8px !important;
+      width: var(--toolbar-icon-width) !important;
+    }
+  }
+
+  /*
+   * url bar
+   */
+
+  #urlbar {
+    #urlbar-background {
+      inset: 0px !important;
+      animation: none !important;
+      background-color: color-mix(in srgb, var(--toolbox-bgcolor) 93%, white 7%) !important;
+    }
+
+    &:is([open]) {
+      #urlbar-background {
+        border: 0 !important;
+        inset: 5px !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+      }
+    }
+    
+    #identity-box.extensionPage {
+      display: none !important;
+    }
+    
+    &:has([value="Erweiterung (Panorama View)"]) {
+      .urlbar-input-container {
+        display: none !important;
+      }
+    }
+    
+    .urlbar-input::placeholder {
+      opacity: 0 !important;
+    }
+  }
+
+  .urlbarView-body-inner {
+    #urlbar[open] > .urlbarView > .urlbarView-body-outer > & {
+      border-top: 0 !important;
+      padding-top: 5px !important;
+      padding-bottom: 3px !important;
+    }
+  }
+
+  .urlbarView-row {
+    margin-inline: 2px !important;
+    min-height: 38px !important;
+
+    &:not([type="tip"], [type="dynamic"]) {
+      :root[uidensity="touch"] & {
+        padding-block: 0 !important;
+      }
+    }
+  }
+
+  .urlbarView-row[label] {
+    margin-block-start: 35px !important;
+
+    &::before {
+      margin-inline-start: 5px !important;
+      top: -25px !important;
+    }
+  }
+
+  .urlbarView-row-inner {
+    padding-inline: 0 !important;
+  }
+
+  .urlbarView-title {
+    font-size: 0.9em !important;
+  }
+
+  .urlbarView-title-separator {
+    font-size: 0.9em !important;
+  }
+}
