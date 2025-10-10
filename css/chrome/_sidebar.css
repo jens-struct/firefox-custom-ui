@@ -1,13 +1,26 @@
+#tabbrowser-tabs {
+  margin-inline: -4px !important;
+
+  &[orient="vertical"] {
+    grid-gap: 0 !important;
+  }
+}
+
+#sidebar-tools-and-extensions-splitter {
+  display: none !important;
+}
+
 #sidebar {
   border: 0 !important;
   box-shadow: none !important;
+  outline: none !important;
   background-color: #212121 !important;
   border-radius: var(--border-radius-small) var(--border-radius-small) 0 0 !important;
 }
 
 #sidebar-box {
   padding-block-end: 0 !important;
-  padding-inline-end: 5px !important;
+  padding-inline-end: 0 !important;
 }
 
 #bookmarksPanel {
@@ -19,5 +32,18 @@
 }
 
 #sidebar-panel-header {
+  padding: 0 10px !important;
+}
+
+#webextpanels-window #sidebar-panel-header {
+  background-color: #212121 !important;
+}
+
+#bookmarksPanel #sidebar-panel-header {
   padding: 0 !important;
+}
+
+#sidebar-splitter,
+#sidebar-launcher-splitter {
+  width: 0 !important;
 }

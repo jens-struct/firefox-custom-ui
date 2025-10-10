@@ -29,18 +29,19 @@ toolbar {
 
   /* style close button like a toolbar button */
   .titlebar-close { 
-    margin-inline: 0 4px !important;
+    margin-inline-end: 4px !important;
     padding: 0 !important;
 
     & > .toolbarbutton-icon {
       appearance: unset !important;
-      inline-size: var(--toolbar-icon-width);
-      block-size: var(--toolbar-icon-height);
-      border-radius: var(--border-radius-small);
+      inline-size: var(--toolbar-icon-width) !important;
+      block-size: var(--toolbar-icon-height) !important;
+      border-radius: var(--border-radius-small) !important;
       background-image: url('../../icons/close.svg') !important;
-      background-repeat: no-repeat;
-      background-size: 75%;
-      background-position: center;
+      background-repeat: no-repeat !important;
+      background-size: 70% !important;
+      background-position: center !important;
+      background-color: transparent !important;
     }
 
     &:hover > .toolbarbutton-icon {
@@ -161,6 +162,14 @@ toolbar {
       background-position: center;
     }
 
+    .toolbarbutton-badge-stack {
+      padding: 0 !important;
+    }
+
+    &:not(:hover) .toolbarbutton-badge-stack {
+      background-color: transparent !important;
+    }
+
     &:is([checked]) {
       .toolbarbutton-icon {
         background-image: url('../../icons/sidebar-collapse.svg');
@@ -171,7 +180,8 @@ toolbar {
   /* back/forward/reload buttons */
   #back-button,
   #forward-button,
-  #reload-button {
+  #reload-button,
+  #stop-button {
     padding: 0 !important;
 
     & > .toolbarbutton-icon {
@@ -184,31 +194,41 @@ toolbar {
    * url bar
    */
 
+  #urlbar-container {
+    margin-inline: 8px 4px !important;
+  }
+
   #urlbar {
-    #urlbar-background {
-      inset: 0px !important;
-      animation: none !important;
-      background-color: color-mix(in srgb, var(--toolbox-bgcolor) 93%, white 7%) !important;
+    .urlbar-background {
+      background-color: #212121 !important;
+      border: 0 !important;
+    }
+
+    &:is([focused]) .urlbar-background {
+      outline-width: 0 !important;
+      box-shadow: none !important;
     }
 
     &:is([open]) {
-      #urlbar-background {
+      .urlbar-background {
         border: 0 !important;
         inset: 5px !important;
+        animation: none !important;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        background-color: color-mix(in srgb, var(--toolbox-bgcolor) 93%, white 7%) !important;
       }
     }
-    
+
     #identity-box.extensionPage {
       display: none !important;
     }
-    
+
     &:has([value="Erweiterung (Panorama View)"]) {
       .urlbar-input-container {
         display: none !important;
       }
     }
-    
+
     .urlbar-input::placeholder {
       opacity: 0 !important;
     }
