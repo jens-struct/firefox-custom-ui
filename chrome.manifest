@@ -1,2 +1,3 @@
 override chrome://global/content/elements/moz-button.css ./css/chrome/core-overrides/moz-button.css
 override chrome://browser/content/sidebar/sidebar-main.css ./css/chrome/core-overrides/sidebar-main.css
+override chrome://browser/content/sidebar/sidebar-panel-header.css ./css/chrome/core-overrides/sidebar-panel-header.css

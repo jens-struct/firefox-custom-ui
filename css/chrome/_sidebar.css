@@ -16,6 +16,10 @@
   outline: none !important;
   background-color: #212121 !important;
   border-radius: var(--border-radius-small) var(--border-radius-small) 0 0 !important;
+
+  &[src*="webext-panels"] {
+    padding-block-start: 15px !important;
+  }
 }
 
 #sidebar-box {
@@ -32,7 +36,7 @@
 }
 
 #sidebar-panel-header {
-  padding: 0 10px !important;
+  padding: 5px 20px !important;
 }
 
 #webextpanels-window #sidebar-panel-header {
